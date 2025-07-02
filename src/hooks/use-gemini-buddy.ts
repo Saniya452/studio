@@ -122,9 +122,13 @@ export function useGeminiBuddy() {
     };
 
     rec.onerror = (event) => {
-      console.error('Speech Recognition Error:', event.error);
-      if(event.error !== 'no-speech') {
-        toast({ title: 'Mic Error', description: `Could not listen: ${event.error}`, variant: 'destructive' });
+      if (event.error !== 'no-speech') {
+        console.error('Speech Recognition Error:', event.error);
+        toast({
+          title: 'Mic Error',
+          description: `Could not listen: ${event.error}`,
+          variant: 'destructive',
+        });
       }
       setStatus('idle');
     };
